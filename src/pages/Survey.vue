@@ -2,6 +2,7 @@
   <q-page class="flex dd">
     <q-pull-to-refresh @refresh="refresh" style="width: 100%">
     <q-list  dense separator>
+
         <q-item clickable={false} v-for="item in items"  v-bind:key="item.uuid">
 
             <q-item-section class="card_section">
@@ -15,10 +16,11 @@
                   <div>
                     <q-rating
                       @input="point => click(item, point)"
+                      v-model="item.rating"
                       size="2rem"
                       icon="star"
-                      color="grey-3"
-                      color-selected="yellow-4"
+                      color="grey-4"
+                      color-selected="yellow-5"
                       class="no-shadow"
                     />
                   </div>
@@ -115,25 +117,8 @@
         this.$router.push("/")
       },
       click(item, point){
-        UserService.makeSurvey(item, point).then(()=>{
-          Notify.create({
-            message: item.name+" 항목에 응답하셨습니다!",
-            color: 'primary',
-            actions: [
-              { label: '되돌리기', color: 'white', handler: () => {
-                    UserService.removeSurvey(item).then(()=>{
-                      UserService.getUser().then(
-                        response => {
-                          this.survey = response.data;
-                        }
-                      );
-                    })
-                } }
-            ]
-          })
-        })
 
-
+        UserService.makeSurvey(item, point)
 
 
       },
