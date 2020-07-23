@@ -1,0 +1,7 @@
+{
+  "appId": "com.burgermaster.app",
+  "appName": "Burger Master",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}

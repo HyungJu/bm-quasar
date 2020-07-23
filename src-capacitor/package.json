@@ -1,0 +1,13 @@
+{
+  "name": "bm-quasar",
+  "version": "0.0.1",
+  "description": "Burger Recommendation",
+  "author": "HyungJu <sungkisa@naver.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "2.3.0",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0",
+    "@capacitor/ios": "2.3.0"
+  }
+}
