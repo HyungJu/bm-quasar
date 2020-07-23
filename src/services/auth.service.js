@@ -2,7 +2,7 @@ import axios from 'axios';
 import app from "app/.quasar/app";
 import router from '../router'
 
-const API_URL = ' https://bdc847728842.ngrok.io/api/auth/';
+const API_URL = 'http://burger-v2.test/api/auth/';
 
 class AuthService {
   login(user) {

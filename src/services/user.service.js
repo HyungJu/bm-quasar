@@ -6,7 +6,7 @@ import Router from "../router";
 import Notify from "quasar/src/plugins/Notify";
 
 
-const API_URL = ' https://bdc847728842.ngrok.io/api/';
+const API_URL = 'http://burger-v2.test/api/';
 
 class UserService {
   constructor() {
