@@ -15,10 +15,12 @@
     "core-js": "^3.6.5",
     "material-icons": "^0.3.1",
     "quasar": "^1.0.0",
+    "vue-infinite-loading": "^2.4.5",
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0"
+    "@quasar/app": "^2.0.0",
+    "quasar-app-extension-ide-helper": "^1.0.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
