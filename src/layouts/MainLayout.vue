@@ -1,9 +1,10 @@
 <template>
 
-  <q-layout view="lHh Lpr lFf">
-    <q-header id="qh"  >
-      <div class="q-px-lg q-mb-md q-ml-sm" id="header" >
-        <div class="text-h5 gmarket-sans-b">Survey</div>
+  <q-layout view="lHh Lpr lFf" >
+    <q-header  id="qh"  class="bg-primary">
+      <div class="q-px-lg q-mb-md q-pt-sm" id="header"  style="display: flex; flex-direction: row; justify-content: space-between">
+        <div class="text-h5 gmarket-sans-b">버거마스터</div>
+        <q-btn size="0.7rem" color="white" text-color="primary">내 설문 보기</q-btn>
       </div>
     </q-header>
 
@@ -11,18 +12,18 @@
       <router-view />
       <q-footer bordered class=" text-primary" style="background-color: #fafafa">
         <q-tabs
-          v-model="tab"
 
           indicator-color="transparent"
           active-color="black"
-          style="color: #BEBEBE; margin-bottom: 5px; margin-top: 5px"
+          style="color: #BEBEBE; "
           ripple="true"
-
+          class=""
         >
-          <q-tab name="mails" icon="home"/>
-          <q-tab name="alarms" icon="star" />
-          <q-tab name="movies" icon="search" />
-          <q-tab name="settings" icon="settings"/>
+
+          <q-route-tab name="mails" icon="home" to="/feed" />
+          <q-route-tab name="alarms" icon="star" to="/home"/>
+          <q-route-tab name="movies" icon="search" to="/home"/>
+          <q-route-tab name="settings" icon="settings" to="/home"/>
 
         </q-tabs>
       </q-footer>

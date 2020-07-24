@@ -4,7 +4,7 @@ import authService from './auth.service.js';
 import { Service } from "axios-middleware";
 import Router from "../router";
 import Notify from "quasar/src/plugins/Notify";
-
+import Store from '../store'
 
 const API_URL = 'http://burger-v2.test/api/';
 
@@ -21,7 +21,8 @@ class UserService {
         return promise;
       },
       onResponseError(response) {
-
+        Store.dispatch('auth/logout')
+        Router().push('/')
       }
     });
   }
