@@ -11,7 +11,6 @@
           color="grey-4"
           color-selected="yellow-5"
           class="no-shadow"
-          value="1"
         />
         <p style="margin-bottom: 3px; margin-top: 5px; color: #838383; font-weight: normal; font-size: 13px">예상 : {{item.predict}}</p>
         <p style="margin-bottom: 0px; color: #838383; font-weight: normal;font-size: 13px">평균 : {{item.average}}</p>

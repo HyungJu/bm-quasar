@@ -24,7 +24,7 @@
 
           <q-route-tab name="mails" icon="home" to="/feed" />
           <q-route-tab name="alarms" icon="star" to="/home"/>
-          <q-route-tab name="movies" icon="search" to="/detail"/>
+          <q-route-tab name="movies" icon="search" />
           <q-route-tab name="settings" icon="settings" to="/home"/>
 
         </q-tabs>
