@@ -6,7 +6,7 @@ import Router from "../router";
 import Notify from "quasar/src/plugins/Notify";
 import Store from '../store'
 
-const API_URL = 'http://burger-v2.test/api/';
+const API_URL = 'https://4b94f2f28e88.ngrok.io/api/';
 
 class UserService {
   constructor() {
@@ -21,8 +21,11 @@ class UserService {
         return promise;
       },
       onResponseError(response) {
-        Store.dispatch('auth/logout')
-        Router().push('/')
+        if(response.response == 401){
+
+          Store.dispatch('auth/logout')
+          Router().push('/')
+        }
       }
     });
   }

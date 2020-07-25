@@ -3,7 +3,7 @@
   <q-layout view="lHh Lpr lFf" >
     <q-header  id="qh"  class="bg-primary">
       <div class="q-px-lg q-mb-md q-pt-sm" id="header"  style="display: flex; flex-direction: row; justify-content: space-between">
-        <div class="text-h5 gmarket-sans-b">버거마스터</div>
+        <div class="text-h5 gmarket-sans-b">{{$route.name}}</div>
         <q-btn size="0.7rem" color="white" text-color="primary">내 설문 보기</q-btn>
       </div>
     </q-header>
@@ -22,7 +22,7 @@
 
           <q-route-tab name="mails" icon="home" to="/feed" />
           <q-route-tab name="alarms" icon="star" to="/home"/>
-          <q-route-tab name="movies" icon="search" to="/home"/>
+          <q-route-tab name="movies" icon="search" to="/detail"/>
           <q-route-tab name="settings" icon="settings" to="/home"/>
 
         </q-tabs>

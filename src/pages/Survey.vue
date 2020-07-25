@@ -1,34 +1,39 @@
 <template>
   <q-page class="flex dd">
-
-      <div v-for="item in items"  v-bind:key="item.uuid" class="card_section">
-        <div class="c">
-          <div style="display:flex; flex-direction: row; justify-content: space-between; ">
-            <p class="title">
-              {{item.name}}
-            </p>
-            <img src="https://burger-master.xyz/uploads/images/584dbfdffbf49cc87bebbd47ff77ad60.jpeg"  width="50px" height="100%" style="object-fit: cover; margin-bottom: 10px"/>
-          </div>
-          <div class="card_container">
-            <q-img v-bind:src="item.image" class="img"  style="border-radius: 10px"/>
-            <div class="rating_container">
-              <q-rating
-                @input="point => click(item, point)"
-                v-model="item.rating"
-                size="2rem"
-                icon="star"
-                color="grey-4"
-                color-selected="yellow-5"
-                class="no-shadow"
-                value="1"
-              />
-              <p>예상 : 3.4 평균 : 4.1</p>
+    <q-pull-to-refresh @refresh="refresh">
+        <div v-for="item in items"  v-bind:key="item.uuid" class="card_section">
+          <div class="c">
+            <div style="display:flex; flex-direction: row; justify-content: space-between; ">
+              <p class="title">
+                {{item.name}}
+              </p>
+              <img src="https://burger-master.xyz/uploads/images/584dbfdffbf49cc87bebbd47ff77ad60.jpeg"  width="50px" height="100%" style="object-fit: cover; margin-bottom: 10px"/>
+            </div>
+            <div class="card_container">
+              <q-img v-bind:src="item.image" class="img"  style="border-radius: 10px"/>
+              <div class="rating_container">
+                <q-rating
+                  @input="point => click(item, point)"
+                  v-model="item.rating"
+                  size="2rem"
+                  icon="star"
+                  color="grey-4"
+                  color-selected="yellow-5"
+                  class="no-shadow"
+                  value="1"
+                />
+                <p>예상 : 3.4 평균 : 4.1</p>
+              </div>
             </div>
           </div>
+          <q-separator />
         </div>
-        <q-separator />
-      </div>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+        <mugen-scroll :handler="fetchData" :should-handle="!loading">
+          <div class="row justify-center q-my-md">
+            <q-spinner-dots color="primary" size="40px" />
+          </div>
+        </mugen-scroll>
+    </q-pull-to-refresh>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn fab icon="refresh" color="primary" @click="refresh()"/>
     </q-page-sticky>
@@ -96,18 +101,30 @@
 </style>
 <script>
   import UserService from '../services/user.service'
-  import Notify from "quasar/src/plugins/Notify";
-  import InfiniteLoading from 'vue-infinite-loading';
+  import MugenScroll from 'vue-mugen-scroll'
+
+  function objToArr(objects){
+    console.log("From ojbtoarr")
+    console.log(objects.length)
+    var arr = [];
+    for (var i = 0; i < objects.length; i++) {
+      console.log(objects[i])
+      arr.push(objects[i]);
+    }
+
+    return arr
+  }
 
   export default {
     name: 'PageIndex',
     components: {
-      InfiniteLoading
+      MugenScroll
     },
     data(){
       return {
         survey: [],
         loaded: false,
+        loading: false
       }
     },
     computed: {
@@ -115,6 +132,7 @@
         return this.survey
       }
     },
+
     methods: {
       logout()  {
         this.$store.dispatch('auth/logout')
@@ -124,38 +142,35 @@
         UserService.makeSurvey(item, point)
       },
 
-      infiniteHandler ($state) {
-        if(this.loaded){
-          UserService.getUser().then(
-            response => {
-
-              this.survey = this.survey.concat(Array.from(response.data))
-              $state.loaded();
-
-            }
-          );
-        }else {
-          $state.loaded();
-        }
-      },
-      refresh() {
+      fetchData() {
+        this.loading = true
 
         UserService.getUser().then(
           response => {
-            this.survey = Array.from(response.data)
+
+            this.survey = this.survey.concat(Object.values(response.data))
+
+          }
+        );
+
+        this.loading = false
+      },
+
+      refresh(callback = null) {
+        UserService.getUser().then(
+          response => {
+
+            this.survey = Object.values(response.data);
+
+            this.loaded = true;
+
+            if(callback){
+              callback()
+            }
           }
         );
       }
-    },
-    created() {
-      alert("I ve been created")
-      UserService.getUser().then(
-        response => {
-          console.log( response.data )
-          this.survey = Array.from(response.data)
-          this.loaded = true;
-        }
-      );
+
     }
   }
 </script>

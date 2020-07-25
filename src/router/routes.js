@@ -10,6 +10,7 @@ const routes = [
   },
   {
     path: '/home',
+    name: 'Home',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Survey.vue') }
@@ -20,6 +21,13 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') }
+    ]
+  },
+  {
+    path: '/detail',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Item.vue') }
     ]
   },
   // Always leave this as last one,

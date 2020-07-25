@@ -4,7 +4,7 @@
       당신을 위한 추천
     </div>
 
-    <q-scroll-area horizontal style="height: 500px">
+    <q-scroll-area horizontal style="height: 200px; overflow-x: hidden; overflow-y: ">
       <div style="display:flex; flex-direction: row">
         <div class="q-mr-lg">
           <div style="width: 130px; height: 130px; background-color: #FAFAFA; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-top: 10px" >
@@ -43,7 +43,11 @@
 
   </q-page>
 </template>
-
+<style>
+-webkit-scrollbar {
+    display: none;
+  }
+</style>
 <script>
   import UserService from '../services/user.service'
 
