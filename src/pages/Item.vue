@@ -1,5 +1,12 @@
 <template>
+
   <q-page class="flex dd q-ma-lg" >
+    <q-btn
+      v-go-back=" '/' "
+      color="primary"
+      label="이전"
+      class="q-mb-md q-btn--outline"
+    />
     <q-card flat bordered class="my-card">
       <q-card-section style="display: flex; flex-direction: column; align-items: center">
         <img v-bind:src="item.image"   style="border-radius: 10px; width: 60vw; margin-bottom: 10px"/>
@@ -18,12 +25,10 @@
     </q-card>
     <h5 class="q-mt-lg q-mb-sm" style="font-weight: bold;">태그</h5>
     <div class="q-mb-md">
-      <q-chip color="deep-orange" text-color="white">
-        고기 패티
+      <q-chip v-for="tag in JSON.parse(item.tag)">
+        {{tag}}
       </q-chip>
-      <q-chip color="primary" text-color="white" >
-        양파
-      </q-chip>
+      <p v-if="item.tag == null" style="margin-bottom: 3px">태그가 없습니다</p>
     </div>
     <q-separator class="q-mb-md"/>
     <div style="display: flex; flex-direction: row">
