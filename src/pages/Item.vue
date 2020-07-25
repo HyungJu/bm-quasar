@@ -5,6 +5,7 @@
         <img v-bind:src="item.image"   style="border-radius: 10px; width: 60vw; margin-bottom: 10px"/>
         <q-rating
           v-model="item.rating"
+          @input="point => click(item, point)"
           size="2rem"
           icon="star"
           color="grey-4"
@@ -56,9 +57,9 @@
       }
     },
     methods: {
-
-
-
+      click(item, point){
+        UserService.makeSurvey(item, point)
+      },
 
     },
     mounted() {
