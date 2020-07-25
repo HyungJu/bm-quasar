@@ -24,7 +24,7 @@ export const auth = {
     logout({ commit }) {
       AuthService.logout();
       commit('logout');
-      alert("알 수 없는 오류가 발생했습니다!")
+      alert("토큰이 만료되었습니다.")
       this.$router.push('/')
     },
     register({ commit }, user) {
