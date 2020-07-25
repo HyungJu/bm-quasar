@@ -33,6 +33,11 @@ class UserService {
     return axios.get(API_URL + 'survey', { headers: authHeader() });
   }
 
+
+  getRecommend() {
+    return axios.get(API_URL + 'survey/recommend', { headers: authHeader() });
+  }
+
   getFeed() {
     return axios.get(API_URL + 'feed', { headers: authHeader() });
   }

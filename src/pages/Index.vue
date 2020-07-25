@@ -171,7 +171,7 @@
         fetchData() {
           this.loadingItem = true
 
-          UserService.getUser().then(
+          UserService.getRecommend().then(
             response => {
 
               this.items = this.items.concat(Object.values(response.data))
