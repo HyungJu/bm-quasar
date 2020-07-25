@@ -1,13 +1,13 @@
 <template>
   <q-page class="flex dd">
     <q-pull-to-refresh @refresh="refresh">
-        <div v-for="item in items"  v-bind:key="item.uuid" class="card_section">
+        <div v-for="item in items"  v-bind:key="item.uuid" class="card_section" @click="$router.push({ name: 'Detail', params: {item: item}})" >
           <div class="c">
             <div style="display:flex; flex-direction: row; justify-content: space-between; ">
               <p class="title">
                 {{item.name}}
               </p>
-              <img src="https://burger-master.xyz/uploads/images/584dbfdffbf49cc87bebbd47ff77ad60.jpeg"  width="50px" height="100%" style="object-fit: cover; margin-bottom: 10px"/>
+              <img v-bind:src="item.brand"  width="50px" height="100%" style="object-fit: cover; margin-bottom: 10px"/>
             </div>
             <div class="card_container">
               <q-img v-bind:src="item.image" class="img"  style="border-radius: 10px"/>
@@ -22,7 +22,7 @@
                   class="no-shadow"
                   value="1"
                 />
-                <p>예상 : 3.4 평균 : 4.1</p>
+                <p style="margin-bottom: 0px">예상 : {{item.predict}}</p> <p>평균 : {{item.average}}</p>
               </div>
             </div>
           </div>

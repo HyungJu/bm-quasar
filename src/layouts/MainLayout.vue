@@ -3,13 +3,15 @@
   <q-layout view="lHh Lpr lFf" >
     <q-header  id="qh"  class="bg-primary">
       <div class="q-px-lg q-mb-md q-pt-sm" id="header"  style="display: flex; flex-direction: row; justify-content: space-between">
-        <div class="text-h5 gmarket-sans-b">{{$route.name}}</div>
-        <q-btn size="0.7rem" color="white" text-color="primary">내 설문 보기</q-btn>
+        <div class="text-h5 gmarket-sans-b" v-if="$router.currentRoute.name == 'Detail' ">{{$router.currentRoute.params.item.name}}</div>
+        <div class="text-h5 gmarket-sans-b" v-else>{{$router.currentRoute.name}}</div>
       </div>
     </q-header>
 
     <q-page-container>
+
       <router-view />
+
       <q-footer bordered class=" text-primary" style="background-color: #fafafa">
         <q-tabs
 
