@@ -1,14 +1,16 @@
 <template>
 
-  <q-page class="flex dd q-ma-lg" >
+  <q-page class="flex dd q-ma-lg " >
     <q-btn
       v-go-back=" '/' "
       color="primary"
       label="이전"
       class="q-mb-md q-btn--outline"
     />
+
     <q-card flat bordered class="my-card">
       <q-card-section style="display: flex; flex-direction: column; align-items: center">
+        <img v-bind:src="item.brand"  style="border-radius: 10px; width: 20vw; margin-bottom: 10px"/>
         <img v-bind:src="item.image"   style="border-radius: 10px; width: 60vw; margin-bottom: 10px"/>
         <q-rating
           v-model="item.point"
@@ -19,8 +21,8 @@
           color-selected="yellow-5"
           class="no-shadow"
         />
-        <p style="margin-bottom: 3px; margin-top: 5px; color: #838383; font-weight: normal; font-size: 13px">예상 : {{item.predict.toFixed(1)}}점</p>
-        <p style="margin-bottom: 0px; color: #838383; font-weight: normal;font-size: 13px">평균 : {{item.average.toFixed(1)}}점</p>
+        <p style="margin-bottom: 3px; margin-top: 5px; color: #838383; font-weight: normal; font-size: 13px">예상 : {{item.predict?item.predict.toFixed(1)+"점":"준비중"}}</p>
+        <p style="margin-bottom: 0px; color: #838383; font-weight: normal;font-size: 13px">평균 : {{item.average?item.average.toFixed(1)+"점":"준비중"}}</p>
       </q-card-section>
     </q-card>
     <h5 class="q-mt-lg q-mb-sm" style="font-weight: bold;">태그</h5>
