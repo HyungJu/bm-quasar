@@ -4,8 +4,8 @@
       당신을 위한 추천
     </div>
 
-    <q-scroll-area horizontal style="height: 200px; overflow-x: hidden; overflow-y: ">
-      <div style="display:flex; flex-direction: row">
+
+      <div class="scrolling-wrapper">
         <div class="q-mr-lg">
           <div style="width: 130px; height: 130px; background-color: #FAFAFA; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-top: 10px" >
             <q-img
@@ -38,14 +38,20 @@
           <h6 style="margin-top: -27px; font-size: 14px;line-height: 16px; max-width: 130px; word-break: keep-all; font-weight: bold">5,000원</h6>
         </div>
       </div>
-    </q-scroll-area>
-
 
   </q-page>
 </template>
 <style>
--webkit-scrollbar {
-    display: none;
+  .scrolling-wrapper {
+    display:flex; flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scrolling-wrapper::-webkit-scrollbar {
+     display: none;
+
   }
 </style>
 <script>
