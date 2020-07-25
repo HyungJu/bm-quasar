@@ -4,7 +4,7 @@
       <q-card-section style="display: flex; flex-direction: column; align-items: center">
         <img v-bind:src="item.image"   style="border-radius: 10px; width: 60vw; margin-bottom: 10px"/>
         <q-rating
-          v-model="item.rating"
+          v-model="item.point"
           @input="point => click(item, point)"
           size="2rem"
           icon="star"
