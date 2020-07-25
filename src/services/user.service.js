@@ -33,6 +33,10 @@ class UserService {
     return axios.get(API_URL + 'survey', { headers: authHeader() });
   }
 
+  getFeed() {
+    return axios.get(API_URL + 'feed', { headers: authHeader() });
+  }
+
   makeSurvey(item , point) {
 
     return axios.post(API_URL +"item/" +item.id+'/survey', { point: point }, { headers: authHeader() });
