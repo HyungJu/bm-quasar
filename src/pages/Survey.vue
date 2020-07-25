@@ -22,7 +22,7 @@
                   class="no-shadow"
                   value="1"
                 />
-                <p style="margin-bottom: 0px">예상 : {{item.predict}}점</p> <p>평균 : {{item.average}}점</p>
+                <p style="margin-bottom: 0px">예상 : {{item.predict.toFixed(1)}}점</p> <p>평균 : {{item.average.toFixed(1)}}점</p>
               </div>
             </div>
           </div>
