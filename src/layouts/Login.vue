@@ -67,7 +67,7 @@
       });
 
       if (this.loggedIn) {
-        this.$router.push('/home');
+        this.$router.push('/feed');
       }
     },
     methods: {
@@ -82,7 +82,7 @@
         this.$store.dispatch('auth/login', user).then(
           () => {
             this.progress = false;
-            this.$router.push('/home')
+            this.$router.push('/feed')
           },
           error => {
             alert("이메일 또는 비밀번호가 올바르지 않습니다 ")
