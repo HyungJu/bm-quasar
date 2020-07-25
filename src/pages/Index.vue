@@ -17,7 +17,7 @@
             />
           </div>
           <h6 style="margin-top: 10px; font-size: 14px;line-height: 16px; max-width: 120px;    text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{element.name}}</h6>
-          <p style="margin-bottom: 0px">예상 : {{element.predict}}점</p> <p>평균 : {{element.average}}점</p>
+          <p style="margin-bottom: 0px">예상 : {{element.predict?element.predict.toFixed(1)+"점":"준비중"}}</p> <p>평균 : {{element.average?element.average.toFixed(1)+"점":"준비중"}}</p>
         </div>
 
       </div>
