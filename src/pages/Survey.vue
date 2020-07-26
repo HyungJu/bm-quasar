@@ -1,16 +1,19 @@
 <template>
   <q-page class="flex dd">
+    <q-banner class="bg-primary text-white q-ma-md">
+      이미지를 눌러 아이템 페이지로 들어갈 수 있습니다.
+    </q-banner>
     <q-pull-to-refresh @refresh="refresh">
-        <div v-for="item in items"  v-bind:key="item.uuid" class="card_section" @click="$router.push({ name: 'Detail', params: {item: item}})" >
-          <div class="c">
+        <div v-for="item in items"  v-bind:key="item.uuid" class="card_section"  >
+          <div class="c" >
             <div style="display:flex; flex-direction: row; justify-content: space-between; ">
               <p class="title">
                 {{item.name}}
               </p>
-              <img v-bind:src="item.brand"  width="50px" height="100%" style="object-fit: cover; margin-bottom: 10px"/>
+              <img  v-bind:src="item.brand"  width="50px" height="100%" style="object-fit: cover; margin-bottom: 10px"/>
             </div>
             <div class="card_container">
-              <q-img v-bind:src="item.image" class="img"  style="border-radius: 10px"/>
+              <q-img  @click="$router.push({ name: 'Detail', params: {item: item}})"  v-bind:src="item.image" class="img"  style="border-radius: 10px"/>
               <div class="rating_container">
                 <q-rating
                   @input="point => click(item, point)"
@@ -22,7 +25,7 @@
                   class="no-shadow"
                   value="1"
                 />
-                <p style="margin-bottom: 0px">예상 : {{item.predict.toFixed(1)}}점</p> <p>평균 : {{item.average.toFixed(1)}}점</p>
+                <p style="margin-bottom: 0px">예상 : {{item.predict?item.predict.toFixed(1)+"점":"준비중"}}</p> <p>평균 : {{item.average?item.average.toFixed(1)+"점":"준비중"}}</p>
               </div>
             </div>
           </div>
@@ -139,6 +142,7 @@
         this.$router.push("/")
       },
       click(item, point){
+        e.preventDefault();
         UserService.makeSurvey(item, point)
       },
 

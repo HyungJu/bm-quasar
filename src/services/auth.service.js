@@ -2,7 +2,7 @@ import axios from 'axios';
 import app from "app/.quasar/app";
 import router from '../router'
 
-const API_URL = 'http://burger-v2.test/api/auth/';
+const API_URL = 'https://api.burger-master.xyz/api/auth/';
 
 class AuthService {
   login(user) {

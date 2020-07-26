@@ -1,7 +1,15 @@
 <template>
-  <q-layout class="fullscreen" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center">
+  <q-layout class="fullscreen" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center" @click="this.hideKeyboard()">
     <h5 class="gmarket-sans-b text-black q-pt-xl" align="center">Burger Master</h5>
     <div>
+      <q-input
+        filled
+        type="text"
+        v-model="name"
+        label="Name"
+        class="q-mb-md"
+        style="width: 80vw"
+      />
       <q-input
         filled
         type="email"
@@ -27,7 +35,7 @@
           처리중
         </template>
       </q-btn>
-      <p align="center" class="q-ma-md q-pb-md" @click="">선생님 계정 :<br>ID:admin@burger-master.xyz PW:111111</p>
+      <p align="center" class="q-ma-md q-pb-md">계정이 없으신가요?</p>
     </div>
   </q-layout>
 </template>
@@ -73,9 +81,6 @@
     methods: {
       hideKeyboard() {
         Keyboard.hide()
-      },
-      register: function(){
-        this.$router.push('register');
       },
       login: function () {
         var user = new User()
