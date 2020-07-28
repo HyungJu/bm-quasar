@@ -1,6 +1,6 @@
 # Burger Master (bm-quasar)
 
-Burger Recommendation
+버거마스터 앱
 
 ## Install the dependencies
 ```bash
